@@ -58,6 +58,13 @@ def register():
         )
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
+
+
+@app.route('/')
+def index():
+    return "Welcome to my social app!"
+
+
 # start the server
 if __name__ == "__main__":
     models.initialize()

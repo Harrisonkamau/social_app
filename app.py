@@ -68,10 +68,14 @@ def index():
 # start the server
 if __name__ == "__main__":
     models.initialize()
-    models.User.create_user(
-        username='harrisonkamau',
-        email='kamauharry@yahoo.com',
-        password='password',
-        admin=True
-    )
+    try:
+        models.User.create_user(
+            username='harrisonkamau',
+            email='kamauharry@yahoo.com',
+            password='password',
+            admin=True
+        )
+    except ValueError:
+        pass
+
     app.run(debug=DEBUG, port=PORT, host=HOST)

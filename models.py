@@ -5,7 +5,6 @@ from flask.ext.login import UserMixin
 from peewee import *
 
 
-
 # set up database
 DATABASE = SqliteDatabase('social.db')
 
@@ -32,7 +31,7 @@ class User(UserMixin, Model):
                 is_admin=admin
                        )
 
-        except IntergrityError:
+        except IntegrityError:
             raise ValueError("User already exists!")
 
 

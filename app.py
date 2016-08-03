@@ -30,7 +30,6 @@ def load_user(userid):
         return None
 
 
-
 @app.before_request
 def before_request():
     """Connect to the database before each request"""
@@ -47,4 +46,11 @@ def after_request(response):
 
 # start the server
 if __name__ == "__main__":
+    models.initialize()
+    models.User.create_user(
+        username='harrisonkamau',
+        email='kamauharry@yahoo.com',
+        password='password',
+        admin=True
+    )
     app.run(debug=DEBUG, port=PORT, host=HOST)

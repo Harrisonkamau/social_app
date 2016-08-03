@@ -11,7 +11,7 @@ DATABASE = SqliteDatabase('social.db')
 
 
 # create a users' model
-class Users(UserMixin, Model):
+class User(UserMixin, Model):
     username = CharField(unique=True)
     email = CharField(unique=True)
     password = CharField(max_length=100)
@@ -22,12 +22,18 @@ class Users(UserMixin, Model):
         database = DATABASE
         order_by = ('-joined_at',)  # list users in a descending order
 
-    @classmethod # without this, a user instance has to be created every time a new user is to be created
+    @classmethod  # without this, a user instance has to be created to call create_user to create a user instance!
     def create_user(cls, username, email, password, admin=False):
-        username = username,
-        email = email,
-        password = generate_password_hash(password)
-        is_admin = admin
+        try:  # cls refers to the User class
+            cls.create(
+                username=username,
+                email=email,
+                password=generate_password_hash(password),
+                is_admin=admin
+                       )
+
+        except IntergrityError:
+            raise ValueError("User already exists!")
 
 
 

@@ -108,7 +108,6 @@ def post():
     return render_template('post.html', form=form)
 
 
-
 # create a home route
 @app.route('/')
 def index():

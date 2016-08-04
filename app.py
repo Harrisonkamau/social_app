@@ -115,7 +115,21 @@ def index():
     return render_template('stream.html', stream=stream)
 
 
+@app.route('/stream')
+@app.route('/stream/<username>')
+def stream(username=None):
+    template = 'stream.html'
+    if username and username != current_user.username:
+        # ** is like comparison ignoring the  text case
+        user = models.User.select().where(models.User.username**username).get()
+        stream = user.posts.limit(100)
+    else:
+        stream = current_user.get_stream.limit(100)
+        user = current_user
 
+    if username:
+        template = 'user_template.html'
+    return render_template(template, stream=stream, user=user)
 # start the server
 if __name__ == "__main__":
     models.initialize()

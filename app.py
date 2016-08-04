@@ -21,7 +21,8 @@ app.secret_key = 'auoesh.beoehgh.32.tibe.jeen'
 # create a login manager
 login_manager = LoginManager()
 login_manager.init_app(app)  # sets up the login manager for the app
-login_manager.login.view = 'login'
+login_manager.login_view = 'login'
+
 
 
 @login_manager.user_loader

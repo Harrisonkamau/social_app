@@ -8,7 +8,7 @@ import models
 # Define variables
 DEBUG = True
 PORT = 8000
-HOST = '127.0.0.0'
+HOST = '0.0.0.0'
 
 
 # create a flask Constructor
@@ -22,7 +22,6 @@ app.secret_key = 'auoesh.beoehgh.32.tibe.jeen'
 login_manager = LoginManager()
 login_manager.init_app(app)  # sets up the login manager for the app
 login_manager.login_view = 'login'
-
 
 
 @login_manager.user_loader

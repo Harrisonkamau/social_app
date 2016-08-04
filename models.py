@@ -58,7 +58,6 @@ class Post(Model):
         order_by = ('-timestamp',)
 
 
-
 def initialize():
     DATABASE.connect()
     DATABASE.create_tables([User], safe=True)

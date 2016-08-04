@@ -53,7 +53,7 @@
             <nav>
                 <a href="{{url_for('index')}}">All Posts</a>
                 {% if current_user.is_authenticated %}
-                <a href="{{url_for('stream',username=current_user.username)}}">Follwing</a>
+                <a href="{{url_for('stream',username=current_user.username)}}">Following</a>
 
                 <a href="{{url_for('post')}}" class="new">Create new post</a>
                 {% endif %}
@@ -66,5 +66,9 @@
 
     </div>
 
+    <!--scripts-->
+
+    <script src="/static/js/vendor/disTime.min.js"></script>
+    <!--<script src="/static/js/main.js"></script>-->
 </body>
 </html>

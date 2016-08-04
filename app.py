@@ -69,19 +69,19 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = forms.LoginForm()
-    try:
-        if form.validate_on_submit():
+    if form.validate_on_submit():
+        try:
             user = models.User.get(models.User.email == form.email.data)
-
-    except models.DoesNotExist:
-        flash("Your emails and password do not match!", "error")
-    else:
-        if check_password_hash(user.password, form.password.data):
-            login_user(user)
-            flash("Successfully logged in!!", "success")
-            return redirect(url_for('index'))
-
-
+        except models.DoesNotExist:
+            flash("Your emails and password do not match!", "error")
+        else:
+            if check_password_hash(user.password, form.password.data):
+                login_user(user)
+                flash("Successfully logged in!!", "success")
+                return redirect(url_for('index'))
+            else:
+                flash("Your emails and password do not match!", "error")
+    return render_template('login.html', form=form)
 
 
 # create a home route

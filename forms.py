@@ -14,6 +14,7 @@ def email_exists(form, field):
         raise ValidationError('User with that email already exists')
 
 
+# create a registration form
 class RegisterForm(Form):
     username = StringField(
         'Username',
@@ -44,3 +45,11 @@ class RegisterForm(Form):
         'Confirm Password',
         validators=[DataRequired()]
     )
+
+
+# create a login form
+class LoginForm(Form):
+    email = StringField('Email',validators=[DataRequired(), Email()])
+    password = StringField('Password', validators=[DataRequired()])
+
+

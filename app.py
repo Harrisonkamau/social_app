@@ -8,7 +8,7 @@ import models
 # Define variables
 DEBUG = True
 PORT = 8000
-HOST = '0.0.0.0'
+HOST = '127.0.0.0'
 
 
 # create a flask Constructor

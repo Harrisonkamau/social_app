@@ -9,7 +9,7 @@ import models
 # Define variables
 DEBUG = True
 PORT = 8000
-HOST = '0.0.0.0'
+HOST = 'localhost'
 
 
 # create a flask Constructor
@@ -111,7 +111,9 @@ def post():
 # create a home route
 @app.route('/')
 def index():
-    return "Welcome to my social app!"
+    stream = models.Post.select().limit(100)
+    return render_template('stream.html', stream=stream)
+
 
 
 # start the server

@@ -1,5 +1,6 @@
 from flask import Flask, g, render_template, redirect, flash, url_for
-from flask_login import LoginManager
+from flask_bcrypt import check_password_hash
+from flask_login import LoginManager, login_user
 
 import forms
 import models
@@ -24,6 +25,7 @@ login_manager.init_app(app)  # sets up the login manager for the app
 login_manager.login_view = 'login'
 
 
+# load user route
 @login_manager.user_loader
 def load_user(userid):
     try:
@@ -32,6 +34,7 @@ def load_user(userid):
         return None
 
 
+# create a before request route
 @app.before_request
 def before_request():
     """Connect to the database before each request"""
@@ -39,6 +42,7 @@ def before_request():
     g.db.connect()
 
 
+# create an after request route
 @app.after_request
 def after_request(response):
     """Close the database after each request"""
@@ -46,6 +50,7 @@ def after_request(response):
     return response
 
 
+# create a register route to register a new user
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = forms.RegisterForm()
@@ -60,6 +65,26 @@ def register():
     return render_template('register.html', form=form)
 
 
+# create a login route
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = forms.LoginForm()
+    try:
+        if form.validate_on_submit():
+            user = models.User.get(models.User.email == form.email.data)
+
+    except models.DoesNotExist:
+        flash("Your emails and password do not match!", "error")
+    else:
+        if check_password_hash(user.password, form.password.data):
+            login_user(user)
+            flash("Successfully logged in!!", "success")
+            return redirect(url_for('index'))
+
+
+
+
+# create a home route
 @app.route('/')
 def index():
     return "Welcome to my social app!"

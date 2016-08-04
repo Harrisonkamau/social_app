@@ -1,7 +1,7 @@
 # import modules
 import datetime
-from flask.ext.bcrypt import generate_password_hash
-from flask.ext.login import UserMixin
+from flask_bcrypt import generate_password_hash
+from flask_login import UserMixin
 from peewee import *
 
 
@@ -15,7 +15,7 @@ class User(UserMixin, Model):
     email = CharField(unique=True)
     password = CharField(max_length=100)
     joined_at = DateTimeField(default=datetime.datetime.now)
-    is_admin = Boolean(default=False)
+    is_admin = BooleanField(default=False)
 
     class Meta:
         database = DATABASE
@@ -37,7 +37,7 @@ class User(UserMixin, Model):
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables(['User'],safe=True)
+    DATABASE.create_tables([User], safe=True)
     DATABASE.close()
 
 

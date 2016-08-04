@@ -33,12 +33,13 @@ class User(UserMixin, Model):
     @classmethod  # without this, a user instance has to be created to call create_user to create a user instance!
     def create_user(cls, username, email, password, admin=False):
         try:  # cls refers to the User class
-            cls.create(
-                username=username,
-                email=email,
-                password=generate_password_hash(password),
-                is_admin=admin
-                       )
+            with DATABASE.transaction():
+                cls.create(
+                    username=username,
+                    email=email,
+                    password=generate_password_hash(password),
+                    is_admin=admin
+                           )
 
         except IntegrityError:
             raise ValueError("User already exists!")

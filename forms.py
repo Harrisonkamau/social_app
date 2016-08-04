@@ -55,4 +55,4 @@ class LoginForm(Form):
 
 # create a post form
 class PostForm(Form):
-    content = TextAreaField("This is my first post", validators=[DataRequired()])
+    content = TextAreaField("Post anything!", validators=[DataRequired()])

@@ -115,6 +115,7 @@ def index():
     return render_template('stream.html', stream=stream)
 
 
+# create a route for streaming posts
 @app.route('/stream')
 @app.route('/stream/<username>')
 def stream(username=None):

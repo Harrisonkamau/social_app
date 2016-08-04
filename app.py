@@ -52,7 +52,7 @@ def register():
     if form.validate_on_submit():
         flash('Registration successful!', 'success')
         models.User.create_user(
-            username=form.uername.data,
+            username=form.username.data,
             email=form.email.data,
             password=form.password.data
         )

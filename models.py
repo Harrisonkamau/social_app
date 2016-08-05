@@ -47,11 +47,12 @@ class User(UserMixin, Model):
 
 # create Posts Model
 class Post(Model):
-    timestamp = DateTimeField(datetime.datetime.now)
+    timestamp = DateTimeField(default=datetime.datetime.now)
     user = ForeignKeyField(
         rel_model=User,
         related_name='posts'
     )
+    # content = some_post_obj
     content = TextField()
 
     class Meta:

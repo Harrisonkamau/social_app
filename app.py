@@ -100,7 +100,7 @@ def logout():
 def post():
     form = forms.PostForm()
     if form.validate_on_submit():
-        models.Post.create(user=g.user.get_current_object(),
+        models.Post.create(user=g.user._get_current_object(),
                            content=form.content.data.strip()
                            )
         flash("A new post has been created!", "success")
@@ -111,7 +111,7 @@ def post():
 # create a home route
 @app.route('/')
 def index():
-    stream = models.Post.select().limit(100)
+    stream = models.Post.select()
     return render_template('stream.html', stream=stream)
 
 
@@ -123,9 +123,9 @@ def stream(username=None):
     if username and username != current_user.username:
         # ** is like comparison ignoring the  text case
         user = models.User.select().where(models.User.username**username).get()
-        stream = user.posts.limit(100)
+        stream = user.posts
     else:
-        stream = current_user.get_stream.limit(100)
+        stream = current_user.get_stream
         user = current_user
 
     if username:

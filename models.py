@@ -30,6 +30,21 @@ class User(UserMixin, Model):
             Post.user == self
         )
 
+    # the users that i follow
+    def following(self):
+        return (User.select().join(
+            Relationship, on=Relationship.to_user
+        ).where(Relationship.from_user == self)
+        )
+
+        # the users that follow me
+    def followers(self):
+        return (
+            User.select().join(
+                Relationship, on=Relationship.from_user
+            ).where(Relationship.to_user == self)
+        )
+
     @classmethod  # without this, a user instance has to be created to call create_user to create a user instance!
     def create_user(cls, username, email, password, admin=False):
         try:  # cls refers to the User class

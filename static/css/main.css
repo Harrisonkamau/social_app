@@ -52,13 +52,13 @@ p {
 /*Header*/
 header {
   width: 100%;
-  background: #fff;
+  background: #138d75;
   padding: 10px 0;
 }
 .icon-logo {
   width: 30px;
   height: 30px;
-  background: url('../img/icon-logo.svg') center no-repeat;
+  background: url('../img/user.svg') center no-repeat;
   background-size: 22px 22px;
   display: block;
   float: left;
@@ -66,7 +66,7 @@ header {
 .icon-profile {
   width: 30px;
   height: 30px;
-  background: url('../img/icon-profile.svg') center no-repeat;
+  background: url('../img/login.svg') center no-repeat;
   background-size: 20px 20px;
   display: block;
   float: right;
@@ -75,7 +75,7 @@ header {
 .icon-power {
   width: 30px;
   height: 30px;
-  background: url('../img/icon-power.svg') center no-repeat;
+  background: url('../img/login.svg') center no-repeat;
   background-size: 20px 20px;
   display: block;
   float: right;
@@ -282,6 +282,7 @@ footer p {
     display: inline-block;
   float: left;
   width: 33%;
+  color: #fff;
 }
 .grid-25{
     display: inline-block;

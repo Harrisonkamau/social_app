@@ -129,7 +129,7 @@ def stream(username=None):
         user = current_user
 
     if username:
-        template = 'user_template.html'
+        template = 'user_stream.html'
     return render_template(template, stream=stream, user=user)
 
 

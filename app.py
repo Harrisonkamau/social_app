@@ -131,6 +131,9 @@ def stream(username=None):
     if username:
         template = 'user_template.html'
     return render_template(template, stream=stream, user=user)
+
+
+
 # start the server
 if __name__ == "__main__":
     models.initialize()

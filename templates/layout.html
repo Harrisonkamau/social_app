@@ -55,7 +55,7 @@
                 {% if current_user.is_authenticated %}
                 <a href="{{url_for('stream',username=current_user.username)}}">Following</a>
 
-                <a href="{{url_for('post')}}" class="new">Create new post</a>
+                <a class="new" href="{{url_for('post')}}" >Create new post</a>
                 {% endif %}
             </nav>
 
@@ -69,6 +69,6 @@
     <!--scripts-->
 
     <script src="/static/js/vendor/disTime.min.js"></script>
-    <!--<script src="/static/js/main.js"></script>-->
+    <script src="/static/js/vendor/main.js"></script>
 </body>
 </html>

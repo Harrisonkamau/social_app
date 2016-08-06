@@ -310,3 +310,8 @@ footer p {
 .post {
     white-space: pre;
 }}
+
+.underline a{
+    text-decoration:underline;
+    text-decoration-color: orange;
+}

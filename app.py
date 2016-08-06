@@ -125,13 +125,12 @@ def stream(username=None):
         user = models.User.select().where(models.User.username**username).get()
         stream = user.posts
     else:
-        stream = current_user.get_stream
+        stream = current_user.get_stream()
         user = current_user
 
     if username:
         template = 'user_stream.html'
     return render_template(template, stream=stream, user=user)
-
 
 
 # start the server

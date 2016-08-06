@@ -133,6 +133,26 @@ def stream(username=None):
     return render_template(template, stream=stream, user=user)
 
 
+# create route for following users
+@app.route('/follow/<username>')
+def follow(username):
+    try:
+        to_user = models.User.get(models.User.username**username)
+    except models.DoesNotExist:
+        pass
+    else:
+        try:
+            models.Relationship.create(
+                from_user=g.user._get_current_object(),
+                to_user=to_user
+
+            )
+        except models.IntegrityError:
+            pass
+        else:
+            flash("You're now following {}".format(to_user.username), "success")
+    return redirect(url_for('stream', username=to_user.username))
+
 # start the server
 if __name__ == "__main__":
     models.initialize()

@@ -133,7 +133,7 @@ def stream(username=None):
     return render_template(template, stream=stream, user=user)
 
 
-# create route for following users
+# create route to follow users
 @app.route('/follow/<username>')
 def follow(username):
     try:
@@ -151,6 +151,27 @@ def follow(username):
             pass
         else:
             flash("You're now following {}".format(to_user.username), "success")
+    return redirect(url_for('stream', username=to_user.username))
+#
+
+# create route to unfollow users
+@app.route('/unfollow/<username>')
+def unfollow(username):
+    try:
+        to_user = models.User.get(models.User.username**username)
+    except models.DoesNotExist:
+        pass
+    else:
+        try:
+            models.Relationship.get(
+                from_user=g.user._get_current_object(),
+                to_user=to_user
+
+            ).delete_instance()
+        except models.IntegrityError:
+            pass
+        else:
+            flash("You followed {}".format(to_user.username), "success")
     return redirect(url_for('stream', username=to_user.username))
 
 # start the server

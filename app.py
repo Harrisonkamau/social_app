@@ -175,6 +175,14 @@ def unfollow(username):
             flash("You unfollowed {}".format(to_user.username), "success")
     return redirect(url_for('stream', username=to_user.username))
 
+
+# create a route to view individual posts
+@app.route('/post/<int:post_id>')
+def view_post(post_id):
+    posts = models.Post.select().where(models.Post.id == post_id)
+    return render_template('stream.html', stream=posts)
+
+
 # start the server
 if __name__ == "__main__":
     models.initialize()

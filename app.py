@@ -135,6 +135,7 @@ def stream(username=None):
 
 # create route to follow users
 @app.route('/follow/<username>')
+@login_required
 def follow(username):
     try:
         to_user = models.User.get(models.User.username**username)
@@ -152,7 +153,7 @@ def follow(username):
         else:
             flash("You're now following {}".format(to_user.username), "success")
     return redirect(url_for('stream', username=to_user.username))
-#
+
 
 # create route to unfollow users
 @app.route('/unfollow/<username>')
@@ -171,7 +172,7 @@ def unfollow(username):
         except models.IntegrityError:
             pass
         else:
-            flash("You followed {}".format(to_user.username), "success")
+            flash("You unfollowed {}".format(to_user.username), "success")
     return redirect(url_for('stream', username=to_user.username))
 
 # start the server

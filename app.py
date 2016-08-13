@@ -1,4 +1,4 @@
-from flask import Flask, g, render_template, redirect, flash, url_for
+from flask import Flask, g, render_template, redirect, flash, url_for, abort
 from flask_bcrypt import check_password_hash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
@@ -122,8 +122,12 @@ def stream(username=None):
     template = 'stream.html'
     if username and username != current_user.username:
         # ** is like comparison ignoring the  text case
-        user = models.User.select().where(models.User.username**username).get()
-        stream = user.posts
+        try:
+            user = models.User.select().where(models.User.username**username).get()
+        except models.DoesNotExist:
+            abort(404)
+        else:
+            stream = user.posts
     else:
         stream = current_user.get_stream()
         user = current_user
@@ -140,7 +144,7 @@ def follow(username):
     try:
         to_user = models.User.get(models.User.username**username)
     except models.DoesNotExist:
-        pass
+        abort(404)
     else:
         try:
             models.Relationship.create(
@@ -161,7 +165,7 @@ def unfollow(username):
     try:
         to_user = models.User.get(models.User.username**username)
     except models.DoesNotExist:
-        pass
+        abort(404)
     else:
         try:
             models.Relationship.get(
@@ -180,6 +184,8 @@ def unfollow(username):
 @app.route('/post/<int:post_id>')
 def view_post(post_id):
     posts = models.Post.select().where(models.Post.id == post_id)
+    if posts.count() == 0:
+        abort(404)
     return render_template('stream.html', stream=posts)
 
 

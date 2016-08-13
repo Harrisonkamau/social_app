@@ -189,6 +189,10 @@ def view_post(post_id):
     return render_template('stream.html', stream=posts)
 
 
+# create an error handler route
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html'), 404
 # start the server
 if __name__ == "__main__":
     models.initialize()

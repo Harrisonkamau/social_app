@@ -11,3 +11,9 @@
 <h3>Functionalities</h3>
 <h3>Register user</h3>
 ![Alt text](screenshots/register_user.png "Register User")
+
+<h3>View all posts</h3>
+![Alt text](screenshots/view_posts.png "View Posts")
+
+<h3>Create a new post</h3>
+![Alt text](screenshots/new_post.png "Create post")

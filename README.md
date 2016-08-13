@@ -1,5 +1,4 @@
-<h1>Social App</h1>.. image:: https://travis-ci.org/dpgaspar/Flask-AppBuilder.png?branch=master
-	:target: https://travis-ci.org/dpgaspar/Flask-AppBuilder
+<h1>Social App</h1>
 <p>Through the app a new user can be created, existing users followed and removed</p>
 <h3>Requirements</h3>
 <ol>

@@ -7,6 +7,7 @@ body {
   color: #777B7E;
   font-weight: 400;
   background: #D3D8DC;
+  background:  #117a65;
   position: relative;
 }
 a {
@@ -53,12 +54,13 @@ p {
 header {
   width: 100%;
   background: #138d75;
+  background:   #16a085 ;
   padding: 10px 0;
 }
 .icon-logo {
   width: 30px;
   height: 30px;
-  background: url('../img/user.svg') center no-repeat;
+  background: url('../img/users.svg') center no-repeat;
   background-size: 22px 22px;
   display: block;
   float: left;
@@ -66,7 +68,7 @@ header {
 .icon-profile {
   width: 30px;
   height: 30px;
-  background: url('../img/login.svg') center no-repeat;
+  background: url('../img/register.png') center no-repeat;
   background-size: 20px 20px;
   display: block;
   float: right;
@@ -75,7 +77,7 @@ header {
 .icon-power {
   width: 30px;
   height: 30px;
-  background: url('../img/login.svg') center no-repeat;
+  background: url('../img/logout.png') center no-repeat;
   background-size: 20px 20px;
   display: block;
   float: right;
@@ -301,7 +303,8 @@ footer p {
     margin: 20px 2%;
   }
   .grid-50 {
-    width: 100%;
+    width: 70%;
+    margin: 40px 2%;
   }
   .row {
     padding: 0 10px;

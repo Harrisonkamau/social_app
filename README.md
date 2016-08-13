@@ -1,4 +1,4 @@
-<h1>Social App</h1>
+<h1>Social App</h1>![Alt text](screenshots/flask.png "View Posts")
 <p>Through the app a new user can be created, existing users followed and removed</p>
 <h3>Requirements</h3>
 <ol>

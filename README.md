@@ -39,5 +39,5 @@ source venv/bin/activate
 python app.py
 ~~~
 <p>Open url on your browser</p>
-![Alt text](screenshots/run.png "View Posts")
+![Alt text](screenshots/run2.png "View Posts")
 

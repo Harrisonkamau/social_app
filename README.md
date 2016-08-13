@@ -17,3 +17,27 @@
 
 <h3>Create a new post</h3>
 ![Alt text](screenshots/new_post.png "Create post")
+
+<h3>Running locally</h3>
+<p>Install virtualenv</p>
+~~~python
+sudo pip install virtualenv or sudo easy_install virtualenv
+
+~~~
+
+<p>Create a virtual environment on your project's directory</p>
+~~~python
+virtualenv venv
+~~~
+
+<p>Activate the virtual environment</p>
+~~~python
+source venv/bin/activate
+~~~
+<p>Run app.py in the virtual environment</p>
+~~~python
+python app.py
+~~~
+<p>Open url on your browser</p>
+![Alt text](screenshots/run.png "View Posts")
+

@@ -10,4 +10,4 @@
 
 <h3>Functionalities</h3>
 <h3>Register user</h3>
-![Alt text](static/img/register_user.png?raw=true "Register User")
+![Alt text](static/img/register_user.png "Register User")

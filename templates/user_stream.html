@@ -25,7 +25,7 @@
 
         </div>
         <div class="grid-25">
-            {% if current_user.is_authenticated() %}
+            {% if current_user.is_authenticated %}
                 {% if user != current_user %}
                     {% if not user in current_user.following() %}
                         <a href="{{url_for('follow', username=user.username)}}" class="small">Follow</a>
